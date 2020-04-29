@@ -122,61 +122,70 @@ public class partie {
 	
 	public void affichePartie() throws Exception
 	{
+		System.out.print("+");
 		for(int i=0;i<this.taille;i++) {
+			System.out.print("---------------+");	
+		}
+		System.out.println();
+		for(int i=0;i<this.taille;i++) {
+			System.out.print("|");
 			for(int j=0;j<this.taille;j++) {
 				if(this.matrice[i][j]!=0){
-					System.out.print("\t"+this.matrice[i][j]+"\t");
+					System.out.print("\t"+this.matrice[i][j]+"\t"+"|");
 				}
 				else
-				System.out.print("\t"+"\t");
+				System.out.print("\t\t|");
 			}
 			System.out.println();
-			System.out.println();
+			System.out.print("+");
+			for(int k=0;k<this.taille;k++) {
+				System.out.print("---------------+");	
+			}
 			System.out.println();
 		}
 	}
 	
 	public void deplacer() {
 		if(this.caseVide[0]==this.taille-1 && this.caseVide[1]==this.taille-1)
-			System.out.println("move the empty square by writing 'left' or 'up'");
+			System.out.println("which square would you like to move the one on the 'left' or on 'top'");
 		else if(this.caseVide[0]==0 && this.caseVide[1]==0)
-			System.out.println("move the empty square by writing 'right' or 'down'");
+			System.out.println("which square would you like to move the one on the 'right' or on 'bottom'");
 		else if(this.caseVide[0]==this.taille-1 && this.caseVide[1]==0)
-			System.out.println("move the empty square by writing 'right' or 'up'");
+			System.out.println("which square would you like to move the one on the 'right' or on 'top'");
 		else if(this.caseVide[0]==0 && this.caseVide[1]==this.taille-1)
-			System.out.println("move the empty square by writing 'left' or 'down'");
+			System.out.println("which square would you like to move the one on the 'left' or on 'bottom'");
 		else if(this.caseVide[0]==this.taille-1)
-			System.out.println("move the empty square by writing 'left' or 'right' or 'up'");
+			System.out.println("which square would you like to move the one on the 'right' or on the 'left' or on 'top'");
 		else if(this.caseVide[1]==this.taille-1)
-			System.out.println("move the empty square by writing 'left' or 'down' or 'up'");
+			System.out.println("which square would you like to move the one on the 'left' or on 'top' or on 'bottom'");
 		else if(this.caseVide[0]==0)
-			System.out.println("move the empty square by writing 'left' or 'right' or 'down'");
+			System.out.println("which square would you like to move the one on the 'left' or on the 'right' or on 'top'");
 		else if(this.caseVide[1]==0)
-			System.out.println("move the empty square by writing 'right' or 'up' or 'down'");
+			System.out.println("which square would you like to move the one on the 'right' or on 'top' or on 'bottom'");
 		else
-			System.out.println("move the empty square by writing 'left' or 'right' or 'up' or 'down'");
+			System.out.println("which square would you like to move the one on the 'left' or on the 'right' or on 'top' or on 'bottom'");
 		Scanner in = new Scanner(System.in); 
 		String dep = in.nextLine(); 
 		int a;
-		if(dep.equals("up")&&this.caseVide[0]!=0) {
+		if(dep.equals("u")&&this.caseVide[0]!=0) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]-1][this.caseVide[1]];
 			this.matrice[this.caseVide[0]-1][this.caseVide[1]]=a; 
 			this.caseVide[0]-=1;
 		}
-		else if(dep.equals("down")&&this.caseVide[0]!=this.taille-1) {
+		else if(dep.equals("b")&&this.caseVide[0]!=this.taille-1) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]+1][this.caseVide[1]];
 			this.matrice[this.caseVide[0]+1][this.caseVide[1]]=a; 
 			this.caseVide[0]+=1;
 		}
-		else if(dep.equals("right")&&this.caseVide[1]!=this.taille-1) {
+		else if(dep.equals("r")&&this.caseVide[1]!=this.taille-1) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]][this.caseVide[1]+1];
 			this.matrice[this.caseVide[0]][this.caseVide[1]+1]=a; 
 			this.caseVide[1]+=1;
 		}
-		else if(dep.equals("left")&&this.caseVide[1]!=0){
+		else if(dep.equals("l")&&this.caseVide[1]!=0){
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]][this.caseVide[1]-1];
 			this.matrice[this.caseVide[0]][this.caseVide[1]-1]=a; 

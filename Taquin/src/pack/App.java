@@ -8,6 +8,7 @@ public class App {
 		p.affichePartie();
 		p.deplacer();	
 	}
+	p.affichePartie();
 	System.out.println("Congratulations !!! ");
 	}
 	
