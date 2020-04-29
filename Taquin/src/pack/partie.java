@@ -2,6 +2,7 @@ package pack;
 import java.util.ArrayList; 
 import java.util.List; 
 import java.util.Random;
+import java.util.Scanner; 
 
 public class partie {
 	public int taille;
@@ -133,5 +134,66 @@ public class partie {
 			System.out.println();
 			System.out.println();
 		}
+	}
+	
+	public void deplacer() {
+		if(this.caseVide[0]==this.taille-1 && this.caseVide[1]==this.taille-1)
+			System.out.println("move the empty square by writing 'left' or 'up'");
+		else if(this.caseVide[0]==0 && this.caseVide[1]==0)
+			System.out.println("move the empty square by writing 'right' or 'down'");
+		else if(this.caseVide[0]==this.taille-1 && this.caseVide[1]==0)
+			System.out.println("move the empty square by writing 'right' or 'up'");
+		else if(this.caseVide[0]==0 && this.caseVide[1]==this.taille-1)
+			System.out.println("move the empty square by writing 'left' or 'down'");
+		else if(this.caseVide[0]==this.taille-1)
+			System.out.println("move the empty square by writing 'left' or 'right' or 'up'");
+		else if(this.caseVide[1]==this.taille-1)
+			System.out.println("move the empty square by writing 'left' or 'down' or 'up'");
+		else if(this.caseVide[0]==0)
+			System.out.println("move the empty square by writing 'left' or 'right' or 'down'");
+		else if(this.caseVide[1]==0)
+			System.out.println("move the empty square by writing 'right' or 'up' or 'down'");
+		else
+			System.out.println("move the empty square by writing 'left' or 'right' or 'up' or 'down'");
+		Scanner in = new Scanner(System.in); 
+		String dep = in.nextLine(); 
+		int a;
+		if(dep.equals("up")) {
+			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
+			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]-1][this.caseVide[1]];
+			this.matrice[this.caseVide[0]-1][this.caseVide[1]]=a; 
+			this.caseVide[0]-=1;
+		}
+		else if(dep.equals("down")) {
+			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
+			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]+1][this.caseVide[1]];
+			this.matrice[this.caseVide[0]+1][this.caseVide[1]]=a; 
+			this.caseVide[0]+=1;
+		}
+		else if(dep.equals("right")) {
+			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
+			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]][this.caseVide[1]+1];
+			this.matrice[this.caseVide[0]][this.caseVide[1]+1]=a; 
+			this.caseVide[1]+=1;
+		}
+		else if(dep.equals("left")){
+			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
+			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]][this.caseVide[1]-1];
+			this.matrice[this.caseVide[0]][this.caseVide[1]-1]=a; 
+			this.caseVide[1]-=1;
+		}
+		else {
+			System.out.println(dep);
+		}
+		
+	}
+	public boolean verif() {
+		for(int i=0;i<this.taille;i++) {
+			for(int j=0;i<this.taille;j++) {
+				if((3*i)+j+1!=this.matrice[i][j])
+					return false;
+			}
+		}
+		return(true);
 	}
 }
