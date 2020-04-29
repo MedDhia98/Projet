@@ -158,39 +158,40 @@ public class partie {
 		Scanner in = new Scanner(System.in); 
 		String dep = in.nextLine(); 
 		int a;
-		if(dep.equals("up")) {
+		if(dep.equals("up")&&this.caseVide[0]!=0) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]-1][this.caseVide[1]];
 			this.matrice[this.caseVide[0]-1][this.caseVide[1]]=a; 
 			this.caseVide[0]-=1;
 		}
-		else if(dep.equals("down")) {
+		else if(dep.equals("down")&&this.caseVide[0]!=this.taille-1) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]+1][this.caseVide[1]];
 			this.matrice[this.caseVide[0]+1][this.caseVide[1]]=a; 
 			this.caseVide[0]+=1;
 		}
-		else if(dep.equals("right")) {
+		else if(dep.equals("right")&&this.caseVide[1]!=this.taille-1) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]][this.caseVide[1]+1];
 			this.matrice[this.caseVide[0]][this.caseVide[1]+1]=a; 
 			this.caseVide[1]+=1;
 		}
-		else if(dep.equals("left")){
+		else if(dep.equals("left")&&this.caseVide[1]!=0){
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]][this.caseVide[1]-1];
 			this.matrice[this.caseVide[0]][this.caseVide[1]-1]=a; 
 			this.caseVide[1]-=1;
 		}
 		else {
-			System.out.println(dep);
+			System.out.println("Invalid input");
 		}
 		
 	}
 	public boolean verif() {
 		for(int i=0;i<this.taille;i++) {
-			for(int j=0;i<this.taille;j++) {
-				if((3*i)+j+1!=this.matrice[i][j])
+			for(int j=0;j<this.taille;j++) {
+				if(i*j==4) return true;
+				else if((3*i)+j+1!=this.matrice[i][j])
 					return false;
 			}
 		}
