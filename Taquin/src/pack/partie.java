@@ -90,26 +90,22 @@ public class partie {
 			}
 		}*/
 		if(niveauMelange(tab)%2==0) {
-			System.out.println("cas0");
 			return tab;
 		}
 		else {
 			if(tab[taille-1][taille-1]==0) {
-				System.out.println("cas3");
 				int a;
 				a=tab[taille-1][taille-2];
 				tab[taille-1][taille-2]=tab[taille-1][taille-3];
 				tab[taille-1][taille-3]=a;
 			}
 			else if(tab[taille-1][taille-2]==0) {
-				System.out.println("cas2");
 				int a;
 				a=tab[taille-1][taille-3];
 				tab[taille-1][taille-3]=tab[taille-1][taille-1];
 				tab[taille-1][taille-1]=a;
 			}
 			else {
-				System.out.println("cas1");
 				int a;
 				a=tab[taille-1][taille-2];
 				tab[taille-1][taille-2]=tab[taille-1][taille-1];
@@ -159,7 +155,7 @@ public class partie {
 		else if(this.caseVide[1]==this.taille-1)
 			System.out.println("which square would you like to move the one on the 'left' or on 'top' or on 'bottom'");
 		else if(this.caseVide[0]==0)
-			System.out.println("which square would you like to move the one on the 'left' or on the 'right' or on 'top'");
+			System.out.println("which square would you like to move the one on the 'left' or on the 'right' or on 'bottom'");
 		else if(this.caseVide[1]==0)
 			System.out.println("which square would you like to move the one on the 'right' or on 'top' or on 'bottom'");
 		else
@@ -167,7 +163,7 @@ public class partie {
 		Scanner in = new Scanner(System.in); 
 		String dep = in.nextLine(); 
 		int a;
-		if(dep.equals("u")&&this.caseVide[0]!=0) {
+		if(dep.equals("t")&&this.caseVide[0]!=0) {
 			a=this.matrice[this.caseVide[0]][this.caseVide[1]];
 			this.matrice[this.caseVide[0]][this.caseVide[1]]=this.matrice[this.caseVide[0]-1][this.caseVide[1]];
 			this.matrice[this.caseVide[0]-1][this.caseVide[1]]=a; 
