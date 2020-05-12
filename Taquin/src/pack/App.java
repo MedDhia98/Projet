@@ -119,9 +119,9 @@ public class App {
 							reader.close();
 							File file = new File("C:/Users/DHIA/Desktop/Players/"+play.getName()+".txt");
 							file.delete();
-							file = new File("C:/Users/DHIA/Desktop/Players/"+play.getName()+".txt");
+							File file2 = new File("C:/Users/DHIA/Desktop/Players/"+play.getName()+".txt");
 							File file1=new File("C:/Users/DHIA/Desktop/Players/secret.txt");
-					        file1.renameTo(file);
+					        file1.renameTo(file2);
 					}
 					else {
 						while(true) {
