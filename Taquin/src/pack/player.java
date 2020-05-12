@@ -1,11 +1,13 @@
 package pack;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class player {
 	public char type;
-	public String name;
+	private String name;
 	
 	public player(char type,String name) {
 		this.type=type;
@@ -17,44 +19,23 @@ public class player {
 		myObj.createNewFile();
 	}
 	
-	public boolean verif() {
-		File folder = new File("C:/Users/DHIA/Desktop/Players/");
-		File[] listOfFiles = folder.listFiles();
+	public void add_game(String S) throws IOException {
+		FileWriter myObj = new FileWriter("C:/Users/DHIA/Desktop/Players/"+this.name+".txt",true);
+		BufferedWriter bw=new BufferedWriter(myObj);
+		bw.write(S);
+		bw.newLine();
+		bw.close();
+	}
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	
 
-		for (int i = 0; i < listOfFiles.length; i++) {
-		  if (listOfFiles[i].isFile()) {
-		    if(listOfFiles[i].getName().equals(this.name+".txt")) {
-		    	return true;
-		    }
-		  }
-		}
-		return false;
-	}
-	
-	public boolean login() throws IOException {
-		if(this.type=='o') {
-			if(!this.verif()) {
-				System.out.println("this account does not exist !!");
-				System.out.println("Please check the name account!!");
-				return false;
-			}
-		}
-		else if(this.type=='n') {
-			if(this.verif()) {
-				System.out.println("this name is already used !!");
-				System.out.println("Chose an other name !!");
-				return false;
-			}
-			else {
-				this.create_player();
-			}
-		}
-		System.out.println("Let's get started !!");
-		return true;
-		
-	}
-	
-	
+
+
 	public int wins;
 	public int num_games;
 }
