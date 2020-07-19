@@ -158,7 +158,7 @@ public class partie {
 	{
 		System.out.print("+");
 		for(int i=0;i<this.taille;i++) {
-			System.out.print("---------------+");	
+			System.out.print("---------------+");
 		}
 		System.out.println();
 		for(int i=0;i<this.taille;i++) {
@@ -243,8 +243,8 @@ public class partie {
 	public boolean verif() {
 		for(int i=0;i<this.taille;i++) {
 			for(int j=0;j<this.taille;j++) {
-				if(i*j==4) return true;
-				else if((3*i)+j+1!=this.matrice[i][j])
+				if((i==this.taille-1)&&(j==this.taille-1)) return true;
+				if((this.taille*i)+j+1!=this.matrice[i][j])
 					return false;
 			}
 		}
